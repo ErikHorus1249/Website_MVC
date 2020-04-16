@@ -40,5 +40,17 @@
 				}
 			}
 		}
+
+		public function show_category(){
+			$query = "SELECT  * FROM  tbl_category order by catID desc ";
+			$result = $this->db->select($query);
+			return $result;	
+		}
+
+		public function getcatbyId($id){
+			$query = "SELECT  * FROM  tbl_category WHERE catID = '$id'";
+			$result = $this->db->select($query);
+			return $result;	
+		}
 	}
 ?>
