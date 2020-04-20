@@ -2,26 +2,27 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/category.php' ?>
 <?php
-/*	if(isset($_GET['catid'] || $_GET['catid'] == NULL){
-		echo "<scipt>window.location = 'castlist.php'</scipt>";
-		
-	}else{
-		$id = $_GET['catid'];
-	}*/
+    $cat = new category();
 	if(!isset($_GET['catid']) || $_GET['catid']==NULL){
 		echo "<scipt>window.location('catlist.php')</scipt>";
 	}else{
 		$id = $_GET['catid'];
 	}
-    $cat = new category();
+    
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        $catName = $_POST['catName'];
+        $updateCat = $cat->update_category($catName, $id);
+
+    } 
  ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Sửa danh mục</h2>
                <div class="block copyblock"> 
                 <span><?php
-                    if(isset($insertCat)){
-                        echo $insertCat;
+                    if(isset($updateCat)){
+                        echo $updateCat;
                     } 
                  ?></span>
                  <?php
@@ -31,7 +32,7 @@
 
 
                  ?>
-                 <form action="catadd.php" method="post">
+                 <form action="" method="post">
                     <table class="form">					
                         <tr>
                             <td>

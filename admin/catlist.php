@@ -4,12 +4,20 @@
 <?php
 
     $cat = new category();
-
+    if(isset($_GET['delid'])){
+    	$id = $_GET['delid'];
+    	$deleteCat = $cat->delete_category($id);
+    }
  ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
-                <div class="block">        
+                <div class="block">
+                <span><?php
+                    if(isset($updateCat)){
+                        echo $updateCat;
+                    } 
+                 ?></span>                      
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -29,7 +37,7 @@
 						<tr class="odd gradeX">
 							<td><?php echo $i ?></td>
 							<td><?php echo $result['catName'] ?></td>
-							<td><a href="catedit.php?catid=<?php echo $result['catId'] ?>">Edit</a> || <a href="?catid=<?php echo $result['catId'] ?>">Delete</a></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId'] ?>">Edit</a> || <a onclick = "return confirm('Bạn có muốn xóa ?')"href="?delid=<?php echo $result['catId'] ?>">Delete</a></td>
 						</tr>
 						<?php
 						}
