@@ -49,11 +49,11 @@
         <div class="grid_12 header-repeat">
             <div id="branding">
                 <div class="floatleft logo">
-                    <img src="img/livelogo.png" alt="Logo" />
+                    <img src="img/A_Kappa2.png" alt="Logo" />
 				</div>
 				<div class="floatleft middle">
-					<h1>Training with live project</h1>
-					<p>www.trainingwithliveproject.com</p>
+					<h1>Master Erik</h1>
+					<p>https://github.com/ErikHorus1249</p>
 				</div>
                 <div class="floatright">
                     <div class="floatleft">
