@@ -41,49 +41,49 @@
 			}
 		}
 
-		public function show_category(){
-			$query = "SELECT  * FROM  tbl_category order by catID desc ";
+		public function show_brand(){
+			$query = "SELECT  * FROM  tbl_brand order by brandID desc ";
 			$result = $this->db->select($query);
 			return $result;	
 		}
 
-		public function update_category($brandName, $id){
+		public function update_brand($brandName, $id){
 
 			$brandName = $this->fm->validation($brandName);
 			$brandName = mysqli_real_escape_string($this->db->link, $brandName); 
 			$id = mysqli_real_escape_string($this->db->link, $id); 
 
 			if(empty($brandName)){
-				$alert = "<span class='success'>category name must be not empty</span>";
+				$alert = "<span class='success'>brand name must be not empty</span>";
 				return $alert;
 			}else{
-				$query = "UPDATE tbl_category SET brandName = '$brandName' WHERE catId = '$id'";
+				$query = "UPDATE tbl_brand SET brandName = '$brandName' WHERE brandId = '$id'";
 				$result = $this->db->update($query);
 				if($result){
-					$alert = "<span class='success'> Updtae category successfully</span>";
+					$alert = "<span class='success'> Updtae brand successfully</span>";
 					return $alert;
 				}else{
-					$alert = "<span class='error'> Update category not success</span>";
+					$alert = "<span class='error'> Update brand not success</span>";
 					return $alert;
 				}
 			}
 		}
 
-		public function delete_category($id){
+		public function delete_brand($id){
 
-			$query = "DELETE   FROM  tbl_category WHERE catID = '$id'";
+			$query = "DELETE   FROM  tbl_brand WHERE brandID = '$id'";
 			$result = $this->db->delete($query);
 			if($result){
-					$alert = "<span class='success'> Updtae category successfully</span>";
+					$alert = "<span class='success'> brand deleted successfully</span>";
 					return $alert;
 				}else{
-					$alert = "<span class='error'> Update category not success</span>";
+					$alert = "<span class='error'> brand did not deleted </span>";
 					return $alert;
 				}
 
 		}
-		public function getcatbyId($id){
-			$query = "SELECT  * FROM  tbl_category WHERE catID = '$id'";
+		public function getbrandbyId($id){
+			$query = "SELECT  * FROM  tbl_brand WHERE brandID = '$id'";
 			$result = $this->db->select($query);
 			return $result;	
 		}
