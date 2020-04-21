@@ -13,6 +13,12 @@
                         <li><a href="brandadd.php">Thêm thương hiệu </a> </li>
                         <li><a href="brandlist.php">Thương hiệu sản phẩm</a> </li>
                     </ul>
+                </li>
+                <li><a class="menuitem">Sản phẩm</a>
+                    <ul class="submenu">
+                        <li><a href="productadd.php">Thêm sản phẩm</a> </li>
+                        <li><a href="productlist.php">Danh sách sản phẩm</a> </li>
+                    </ul>
                 </li> 
                <li><a class="menuitem">Site Option</a>
                     <ul class="submenu">
@@ -36,12 +42,7 @@
                     </ul>
                 </li>
                 
-                <li><a class="menuitem">Product Option</a>
-                    <ul class="submenu">
-                        <li><a href="addproduct.php">Add Product</a> </li>
-                        <li><a href="productlist.php">Product List</a> </li>
-                    </ul>
-                </li>
+                
             </ul>
         </div>
     </div>
