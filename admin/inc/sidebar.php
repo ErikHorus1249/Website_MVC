@@ -14,7 +14,7 @@
                         <li><a href="brandlist.php">Thương hiệu sản phẩm</a> </li>
                     </ul>
                 </li>
-                <li><a class="menuitem">Sản phẩm </a>
+                <li><a class="menuitem">Sản phẩm</a>
                     <ul class="submenu">
                         <li><a href="productadd.php">Thêm sản phẩm </a> </li>
                         <li><a href="productlist.php">Danh sách sản phẩm</a> </li>
