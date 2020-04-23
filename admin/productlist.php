@@ -9,10 +9,21 @@
 	$pd = new product();
 	$fm = new Format();
 ?>
+<?php
+    if(isset($_GET['delid'])){
+    	$id = $_GET['delid'];
+    	$deleteProduct = $pd->delete_product($id);
+    }
+ ?>
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Post List</h2>
-        <div class="block">  
+        <h2>Product list</h2>
+        <div class="block">
+        <?php
+        	if(isset($delete_product)){
+        		echo $delete_product;
+        	}
+        ?>  
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -51,7 +62,7 @@
 					?></td>
 					<td><?php echo $fm->textShorten($result['product_desc'],30);?></td>
 					<!-- <td class="center">trident</td> -->
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
+					<td><a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> || <a onclick = "return confirm('Bạn có muốn xóa ?')" href="?delid=<?php echo $result['productId'] ?>">Delete</a></td>
 				</tr>
 				<?php
 				}

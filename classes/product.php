@@ -80,10 +80,8 @@
 			return $result;	
 		}
 
-		// public function update_category($catName, $id){
+		// public function update_product($_POST,$_FILES,$id){
 
-		// 	$catName = $this->fm->validation($catName);
-		// 	$catName = mysqli_real_escape_string($this->db->link, $catName); 
 		// 	$id = mysqli_real_escape_string($this->db->link, $id); 
 
 		// 	if(empty($catName)){
@@ -102,24 +100,24 @@
 		// 	}
 		// }
 
-		// public function delete_category($id){
+		public function delete_product($id){
 
-		// 	$query = "DELETE   FROM  tbl_category WHERE catID = '$id'";
-		// 	$result = $this->db->delete($query);
-		// 	if($result){
-		// 			$alert = "<span class='success'> Updtae category successfully</span>";
-		// 			return $alert;
-		// 		}else{
-		// 			$alert = "<span class='error'> Update category not success</span>";
-		// 			return $alert;
-		// 		}
+			$query = "DELETE   FROM  tbl_product WHERE productID = '$id'";
+			$result = $this->db->delete($query);
+			if($result){
+					$alert = "<span class='success'>Product war deleted successfully</span>";
+					return $alert;
+				}else{
+					$alert = "<span class='error'>Product warn't deleted successfully</span>";
+					return $alert;
+				}
 
-		// }
-		// public function getcatbyId($id){
-		// 	$query = "SELECT  * FROM  tbl_category WHERE catID = '$id'";
-		// 	$result = $this->db->select($query);
-		// 	return $result;	
-		// }
+		}
+		public function getproductbyId($id){
+			$query = "SELECT  * FROM  tbl_product WHERE productID = '$id'";
+			$result = $this->db->select($query);
+			return $result;	
+		}
 
 
 
