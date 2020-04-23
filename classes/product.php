@@ -58,13 +58,24 @@
 		}
 
 		public function show_product(){
+			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product
 			// $query = "SELECT  * FROM  tbl_product order by productId desc ";
+
+
+			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product category va brand
+			// $query = "
+			// SELECT  tbl_product.*, tbl_category.catName, tbl_brand.brandName
+			// FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId 
+			// INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
+			// order by tbl_product.productId desc
+			// ";
+
+
+			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product category va brand
 			$query = "
-			SELECT  tbl_product.*, tbl_category.catName, tbl_brand.brandName
-			FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId 
-			INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
-			order by tbl_product.productId desc
-			";
+			SELECT  p.*, c.catName, b.brandName
+			FROM tbl_product as p, tbl_category as c, tbl_brand as b WHERE p.catId = c.catId 
+			AND p.brandId = b.brandId order by p.productId desc";
 			$result = $this->db->select($query);
 			return $result;	
 		}
