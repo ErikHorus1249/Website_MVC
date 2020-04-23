@@ -3,6 +3,18 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/category.php';?>
 <?php include '../classes/brand.php';?>
+<?php include '../classes/product.php';?>
+
+<?php
+
+    $pd = new product();
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+
+        $insertProduct = $pd->insert_product($_POST, $_FILES);
+
+    } 
+ ?>
 
 <div class="grid_10">
     <div class="box round first grid">
@@ -10,7 +22,11 @@
         <div class="block">               
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
-               
+               <span><?php
+                    if(isset($insertProduct)){
+                        echo $insertProduct;
+                    } 
+                ?></span>
                 <tr>
                     <td>
                         <label>Name</label>
@@ -25,7 +41,7 @@
                     </td>
                     <td>
                         <select id="select" name="category">
-                            <option>-------Select Category------</option>
+                            <option>--------Select Category------</option>
                             <?php
                                 $cat = new category();
                                 $catlist = $cat->show_category();
@@ -47,10 +63,19 @@
                     </td>
                     <td>
                         <select id="select" name="brand">
-                            <option>Select Brand</option>
+                            <option>--------Select Brand------</option>
+                            <?php
+                                $brand = new brand();
+                                $brandlist = $brand->show_brand();
+                                if($brandlist){
+                                    while($result = $brandlist->fetch_assoc()){
 
-                            <option value="1">Brand One</option>
-
+                             ?>
+                            <option value="<?php echo $result['brandId'];?>"><?php echo $result['brandName'] ?></option>
+                            <?php
+                            }
+                        } 
+                            ?>
                         </select>
                     </td>
                 </tr>
