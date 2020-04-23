@@ -19,14 +19,15 @@
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Thêm sản phẩm mới</h2>
-        <div class="block">               
+        <div class="block">
+        <span></span><?php
+            if(isset($insertProduct)){
+                echo $insertProduct;
+            } 
+        ?></span>              
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
-               <span><?php
-                    if(isset($insertProduct)){
-                        echo $insertProduct;
-                    } 
-                ?></span>
+               
                 <tr>
                     <td>
                         <label>Name</label>
