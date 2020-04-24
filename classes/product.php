@@ -18,9 +18,8 @@
 			$this->db = new Database();
 			$this->fm = new Format();
 		}
-
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		public function insert_product($data, $files){
-
 
 			$productName = mysqli_real_escape_string($this->db->link, $data['productName']);
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
@@ -56,7 +55,7 @@
 				}
 			}
 		}
-
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		public function show_product(){
 			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product
 			// $query = "SELECT  * FROM  tbl_product order by productId desc ";
@@ -79,7 +78,7 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
-//#########################################################################################
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 		 public function update_product($data,$files,$id){
 
@@ -130,7 +129,7 @@
 						}else{
 							$alert = "<span class='error'> Insert product not success</span>";
 							return $alert;
-				}
+						}
 					}
 				}else{
 					$query = "UPDATE tbl_product SET
@@ -148,11 +147,11 @@
 					}else{
 						$alert = "<span class='error'> Insert product not success</span>";
 						return $alert;
-			}
 					}
-	}
-}
-//#########################################################################################
+				}
+			}
+		}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		public function delete_product($id){
 
 			$query = "DELETE   FROM  tbl_product WHERE productID = '$id'";
@@ -164,13 +163,12 @@
 					$alert = "<span class='error'>Product warn't deleted successfully</span>";
 					return $alert;
 				}
-
 		}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		public function getproductbyId($id){
 			$query = "SELECT  * FROM  tbl_product WHERE productID = '$id'";
 			$result = $this->db->select($query);
 			return $result;
 		}
-	}
-
+}
 ?>
