@@ -16,31 +16,29 @@
         $id = $_GET['productid'];
     }
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SET['productId'])){
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
 
         $updateProduct = $pd->update_product($_POST, $_FILES,$id);
 
-    } 
+    }
  ?>
 
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Sửa thông tin sản phẩm</h2>
         <div class="block">
-        <span></span><?php
+        <span><?php
             if(isset($updateProduct)){
                 echo $updateProduct;
-            } 
+            }
         ?></span>
         <?php
             $get_product_name = $pd->getproductbyId($id);
             if($get_product_name){
                 while($result_product=$get_product_name->fetch_assoc()){
-
-        ?>              
+        ?>
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
-               
                 <tr>
                     <td>
                         <label>Name</label>
@@ -49,7 +47,7 @@
                         <input type="text" name="productName" value="<?php echo $result_product['productName']?>" class="medium" />
                     </td>
                 </tr>
-				<tr>
+				       <tr>
                     <td>
                         <label>Category</label>
                     </td>
@@ -62,8 +60,8 @@
                                 if($catlist){
                                     while($result = $catlist->fetch_assoc()){
                              ?>
-                            <option 
-                            <?php 
+                            <option
+                            <?php
                                 if($result['catId']==$result_product['catId']){   echo 'selected';  }
                             ?>
                             value="<?php echo $result['catId']; ?>"><?php echo $result['catName'];?></option>
@@ -95,12 +93,12 @@
                             value="<?php echo $result['brandId'];?>"><?php echo $result['brandName'] ?></option>
                             <?php
                             }
-                        } 
+                        }
                             ?>
                         </select>
                     </td>
                 </tr>
-				
+
 				 <tr>
                     <td style="vertical-align: top; padding-top: 9px;">
                         <label>Description</label>
@@ -117,7 +115,7 @@
                         <input type="text" name="price" value="<?php echo $result_product['price']?>" class="medium" />
                     </td>
                 </tr>
-            
+
                 <tr>
                     <td>
                         <label>Upload Image</label>
@@ -127,7 +125,7 @@
                         <input type="file" name="image"/>
                     </td>
                 </tr>
-				
+
 				<tr>
                     <td>
                         <label>Product Type</label>
@@ -142,7 +140,7 @@
                             <?php
                                 }else{
                             ?>
-                            
+
                                 <option value="1">Featured</option>
                                 <option selected value="0">Non-Featured</option>
                             <?php
@@ -155,7 +153,7 @@
 				<tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" Value="Save" />
+                        <input type="submit" name="submit" Value="Sửa" />
                     </td>
                 </tr>
             </table>
@@ -179,5 +177,3 @@
 </script>
 <!-- Load TinyMCE -->
 <?php include 'inc/footer.php';?>
-
-

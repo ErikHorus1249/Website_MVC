@@ -13,21 +13,21 @@
 
         $insertProduct = $pd->insert_product($_POST, $_FILES);
 
-    } 
+    }
  ?>
 
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Thêm sản phẩm mới</h2>
         <div class="block">
-        <span></span><?php
+        <span><?php
             if(isset($insertProduct)){
                 echo $insertProduct;
-            } 
-        ?></span>              
+            }
+        ?></span>
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
-               
+
                 <tr>
                     <td>
                         <label>Name</label>
@@ -75,12 +75,12 @@
                             <option value="<?php echo $result['brandId'];?>"><?php echo $result['brandName'] ?></option>
                             <?php
                             }
-                        } 
+                        }
                             ?>
                         </select>
                     </td>
                 </tr>
-				
+
 				 <tr>
                     <td style="vertical-align: top; padding-top: 9px;">
                         <label>Description</label>
@@ -97,7 +97,7 @@
                         <input type="text" name="price" placeholder="Enter Price..." class="medium" />
                     </td>
                 </tr>
-            
+
                 <tr>
                     <td>
                         <label>Upload Image</label>
@@ -106,7 +106,7 @@
                         <input type="file" name="image"/>
                     </td>
                 </tr>
-				
+
 				<tr>
                     <td>
                         <label>Product Type</label>
@@ -143,5 +143,3 @@
 </script>
 <!-- Load TinyMCE -->
 <?php include 'inc/footer.php';?>
-
-
