@@ -179,6 +179,12 @@
 		$result = $this->db->select($query);
 		return $result;
 	}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	public function getNewProduct(){
+		$query = "SELECT  * FROM  tbl_product order by productId desc";
+		$result = $this->db->select($query);
+		return $result;
+	}
 }
 ?>

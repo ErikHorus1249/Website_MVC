@@ -15,8 +15,10 @@
 				<?php
 				 	$product_featheres = $product->getproduct_feartheres();
 					if($product_featheres){
+						$index = 0;
 						while($result=$product_featheres->fetch_assoc()){
-
+							if($index < 4){
+								$index ++;
 				 ?>
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="details.php"><img src="admin/upload/<?php echo $result['image'] ?>" alt="" width=150 height=150></a>
@@ -26,42 +28,38 @@
 				     <div class="button"><span><a href="preview.php" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php
+							}
 						}
 					}
 				?>
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
-    		<h3>New Products</h3>
+    		<h3>Sản phẩm mới</h3>
     		</div>
     		<div class="clear"></div>
     	</div>
 			<div class="section group">
+				<?php
+				 	$new_product = $product->getNewProduct();
+					if($new_product){
+						$index = 0;
+						while($result=$new_product->fetch_assoc()){
+							if($index < 4){
+								$index ++;
+				 ?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.php"><img src="images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$403.66</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
+					 <a href="details.php"><img src="admin/upload/<?php echo $result['image'] ?>" alt="" width=150 height=150></a>
+					 <h2><?php echo $result['productName'] ?></h2>
+					 <p><span class="price"><?php echo $result['price']." VND" ?></span></p>
+				     <div class="button"><span><a href="preview.php" class="details">Chi tiết</a></span></div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.php"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$621.75</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$428.02</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$457.88</span></p>
+				<?php
+							}
+						}
+					}
+				?>
 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
 			</div>
     </div>
  </div>
