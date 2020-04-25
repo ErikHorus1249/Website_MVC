@@ -25,7 +25,7 @@
 					 <h2><?php echo $result['productName'] ?></h2>
 					 <p><?php echo $fm->textShorten($result['product_desc'], 20) ?></p>
 					 <p><span class="price"><?php echo $result['price']." VND" ?></span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Chi tiết</a></span></div>
+				     <div class="button"><span><a href="details.php?productid=<?php echo $result['productId'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php
 							}
@@ -44,15 +44,15 @@
 				 	$new_product = $product->getNewProduct();
 					if($new_product){
 						$index = 0;
-						while($result=$new_product->fetch_assoc()){
+						while($new_result=$new_product->fetch_assoc()){
 							if($index < 4){
 								$index ++;
 				 ?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="details.php"><img src="admin/upload/<?php echo $result['image'] ?>" alt="" width=150 height=150></a>
-					 <h2><?php echo $result['productName'] ?></h2>
-					 <p><span class="price"><?php echo $result['price']." VND" ?></span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Chi tiết</a></span></div>
+					 <a href="details.php"><img src="admin/upload/<?php echo $new_result['image'] ?>" alt="" width=150 height=150></a>
+					 <h2><?php echo $new_result['productName'] ?></h2>
+					 <p><span class="price"><?php echo $new_result['price']." VND" ?></span></p>
+				     <div class="button"><span><a href="details.php?productid=<?php echo $new_result['productId'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php
 							}

@@ -18,6 +18,7 @@
   $user = new user();
   $product = new product();
   $cat = new category();
+  $brand = new brand();
 
 ?>
 

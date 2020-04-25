@@ -186,5 +186,19 @@
 		$result = $this->db->select($query);
 		return $result;
 	}
+
+	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		public function product_detail($id){
+
+			$query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+			FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+			INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+			WHERE productId = '$id'";
+			
+			$result = $this->db->select($query);
+			return $result;
+		}
+
 }
 ?>

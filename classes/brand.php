@@ -1,13 +1,13 @@
 <?php
-
-	include_once '../lib/database.php';
-	include_once '../helper/format.php';
+	$filepath = realpath(dirname(__FILE__));
+	include_once $filepath.'/../lib/database.php';
+	include_once $filepath.'/../helper/format.php';
 ?>
 
 
 <?php
 	/**
-	 * 
+	 *
 	 */
 	class brand
 	{
@@ -23,7 +23,7 @@
 
 			$brandName = $this->fm->validation($brandName);
 
-			$brandName = mysqli_real_escape_string($this->db->link, $brandName); 
+			$brandName = mysqli_real_escape_string($this->db->link, $brandName);
 
 			if(empty($brandName)){
 				$alert = "<span class='success'>Brand name must be not empty</span>";
@@ -44,14 +44,14 @@
 		public function show_brand(){
 			$query = "SELECT  * FROM  tbl_brand order by brandID desc ";
 			$result = $this->db->select($query);
-			return $result;	
+			return $result;
 		}
 
 		public function update_brand($brandName, $id){
 
 			$brandName = $this->fm->validation($brandName);
-			$brandName = mysqli_real_escape_string($this->db->link, $brandName); 
-			$id = mysqli_real_escape_string($this->db->link, $id); 
+			$brandName = mysqli_real_escape_string($this->db->link, $brandName);
+			$id = mysqli_real_escape_string($this->db->link, $id);
 
 			if(empty($brandName)){
 				$alert = "<span class='success'>brand name must be not empty</span>";
@@ -85,11 +85,11 @@
 		public function getbrandbyId($id){
 			$query = "SELECT  * FROM  tbl_brand WHERE brandID = '$id'";
 			$result = $this->db->select($query);
-			return $result;	
+			return $result;
 		}
 
 
 
 	}
-	
+
 ?>
