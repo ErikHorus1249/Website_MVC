@@ -170,5 +170,15 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Fontend
+
+	public function getproduct_feartheres(){
+		$query = "SELECT  * FROM  tbl_product WHERE type = '0'";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
 }
 ?>
