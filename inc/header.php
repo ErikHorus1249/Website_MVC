@@ -1,3 +1,18 @@
+<?php
+    include 'lib/session.php';
+    Session::init(); // khoi tao phien lam viec moi
+?>
+
+<?php
+  require_once 'lib/database.php';
+  require_once 'helper/format.php';
+?>
+<?php
+  header("Cache-Control: no-cache, must-revalidate");
+  header("Pragma: no-cache");
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+  header("Cache-Control: max-age=2592000");
+?>
 <!DOCTYPE HTML>
 <head>
 <title>Store Website</title>
@@ -7,10 +22,10 @@
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="js/jquerymain.js"></script>
 <script src="js/script.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/nav.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script> 
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/nav-hover.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>

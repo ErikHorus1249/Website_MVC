@@ -1,15 +1,14 @@
 
 
-<?php 
+<?php
     include '../lib/session.php';
-    Session::checkSession(); // kiem tra xem co phien lam viec nao khong 
- ?>
-
+    Session::checkSession(); // kiem tra xem co phien lam viec nao khong
+?>
 
 <?php
   header("Cache-Control: no-cache, must-revalidate");
-  header("Pragma: no-cache"); 
-  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
+  header("Pragma: no-cache");
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
   header("Cache-Control: max-age=2592000");
 ?>
 <!DOCTYPE html>
@@ -65,7 +64,7 @@
                             <?php
                                 if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                     Session::destroy();
-                                } 
+                                }
                              ?>
                             <li><a href="?action=logout">Logout</a></li>
                         </ul>
@@ -88,4 +87,3 @@
         </div>
         <div class="clear">
         </div>
-    
