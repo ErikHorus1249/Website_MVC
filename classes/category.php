@@ -1,13 +1,13 @@
 <?php
-
-	include_once '../lib/database.php';
-	include_once '../helper/format.php';
+	$filepath = realpath(dirname(__FILE__));
+	include_once $filepath.'/../lib/database.php';
+	include_once $filepath.'/../helper/format.php';
 ?>
 
 
 <?php
 	/**
-	 * 
+	 *
 	 */
 	class category
 	{
@@ -23,7 +23,7 @@
 
 			$catName = $this->fm->validation($catName);
 
-			$catName = mysqli_real_escape_string($this->db->link, $catName); 
+			$catName = mysqli_real_escape_string($this->db->link, $catName);
 
 			if(empty($catName)){
 				$alert = "<span class='success'>category name must be not empty</span>";
@@ -44,14 +44,14 @@
 		public function show_category(){
 			$query = "SELECT  * FROM  tbl_category order by catID desc ";
 			$result = $this->db->select($query);
-			return $result;	
+			return $result;
 		}
 
 		public function update_category($catName, $id){
 
 			$catName = $this->fm->validation($catName);
-			$catName = mysqli_real_escape_string($this->db->link, $catName); 
-			$id = mysqli_real_escape_string($this->db->link, $id); 
+			$catName = mysqli_real_escape_string($this->db->link, $catName);
+			$id = mysqli_real_escape_string($this->db->link, $id);
 
 			if(empty($catName)){
 				$alert = "<span class='success'>category name must be not empty</span>";
@@ -85,11 +85,11 @@
 		public function getcatbyId($id){
 			$query = "SELECT  * FROM  tbl_category WHERE catID = '$id'";
 			$result = $this->db->select($query);
-			return $result;	
+			return $result;
 		}
 
 
 
 	}
-	
+
 ?>

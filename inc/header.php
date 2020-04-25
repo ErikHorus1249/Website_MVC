@@ -1,12 +1,26 @@
+
 <?php
-    include 'lib/session.php';
+    include './lib/session.php';
     Session::init(); // khoi tao phien lam viec moi
 ?>
 
 <?php
-  require_once 'lib/database.php';
-  require_once 'helper/format.php';
+  require_once './lib/database.php';
+  require_once './helper/format.php';
+
+  spl_autoload_register(function($className){
+    include_once "classes/".$className.".php";
+  });
+
+  $db = new Database();
+  $fm = new Format();
+  $cart = new cart();
+  $user = new user();
+  $product = new product();
+  $cat = new category();
+
 ?>
+
 <?php
   header("Cache-Control: no-cache, must-revalidate");
   header("Pragma: no-cache");

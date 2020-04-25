@@ -1,14 +1,16 @@
 
-<?php
-	include '../config/config.php';
-?>
 
 <?php
+$filepath = realpath(dirname(__FILE__));
+require_once $filepath.'/../config/config.php'; 
+?>
+
+ <?php
 Class Database{
-	public $host = DB_HOST;
-	public $user = DB_USER;
-	public $pass = DB_PASS;
-	public $dbname = DB_NAME;
+	public $host = "localhost";
+	public $user = "root";
+	public $pass = "";
+	public $dbname = "Web_MVC";
 	public $link;
 	public $error;
 	public function __construct(){
