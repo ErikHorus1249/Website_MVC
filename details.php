@@ -11,6 +11,11 @@
         $id = $_GET['productid'];
     }
 
+		if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+				$quantity = $_POST['quantity'];
+        $addToCart = $cart->add_to_cart($id, $quantity);
+
+    }
  ?>
 
 
@@ -35,8 +40,8 @@
 						<p>Brand:<span><?php echo $result['brandName'] ?></span></p>
 					</div>
 				<div class="add-cart">
-					<form action="cart.php" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
+					<form action="" method="post">
+						<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
 					</form>
 				</div>
