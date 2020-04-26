@@ -54,13 +54,16 @@
 			$query = "UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
 			$result = $this->db->update($query);
 			if($result){
-				echo "ok";
-			}else {
-				echo "No";
-			}
+					$alert = "<span class='success'>Cart updated successfully</span>";
+					return $alert;
+				}else{
+					$alert = "<span class='error'>Cart hasn't updated</span>";
+					return $alert;
+				}
 		}
 		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 				public function delete_cart($id){
+
 					$query = "DELETE   FROM  tbl_cart WHERE cartId = '$id'";
 					$result = $this->db->delete($query);
 					if($result){

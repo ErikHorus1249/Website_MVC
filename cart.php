@@ -13,6 +13,11 @@
 		$deleteCart = $cart->delete_cart($delCartId);
 	}
 ?>
+<?php
+	if(isset($updateInfoCart)){
+		echo $updateInfoCart;
+	}
+?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">
@@ -20,12 +25,12 @@
 			    	<h2>Your Cart</h2>
 						<table class="tblone">
 							<tr>
-								<th width="20%">Product Name</th>
-								<th width="10%">Image</th>
-								<th width="15%">Price</th>
-								<th width="25%">Quantity</th>
-								<th width="20%">Total Price</th>
-								<th width="10%">Action</th>
+								<th width="20%">Tên sản phẩm</th>
+								<th width="10%">Hình ảnh</th>
+								<th width="15%">Giá</th>
+								<th width="25%">Số lượng</th>
+								<th width="20%">Tổng</th>
+								<th width="10%">Hủy</th>
 							</tr>
 							<?php
 							 	$getProductCart = $cart->get_product_cart();
@@ -41,20 +46,15 @@
 									<form action="" method="post">
 										<input type="hidden" name="cartid" value="<?php echo $result['cartId'] ?>" />
 										<input type="number" name="quantity" value="<?php echo $result['quantity'] ?>" min="1"/>
-										<input type="submit" name="submit" value="Update"/>
+										<input type="submit" name="submit" value="sửa"/>
 									</form>
-									<?php
-									 	if(isset($updateInfoCart)){
-											return $updateInfoCart;
-										}
-									?>
 								</td>
 								<td><?php
 									$total = $result['quantity']*$result['price'];
 									$sub_total += $total;
 									echo $total;
 								?></td>
-								<td><a href="cart.php?delcartid=<?php echo $result['cartId'] ?>">X</a></td>
+								<td><a href="cart.php?delcartid=<?php echo $result['cartId'] ?>">Xóa</a></td>
 							</tr>
 							<?php
 								}
@@ -67,7 +67,7 @@
 								<td><?php echo $sub_total ?></td>
 							</tr>
 							<tr>
-								<th>VAT : </th>
+								<th>thuế  VAT: </th>
 								<td><?php echo $VAT = $sub_total*0.1 ?></td>
 							</tr>
 							<tr>
