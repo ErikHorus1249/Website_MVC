@@ -55,11 +55,10 @@
 									$sub_total += $total;
 									echo $total." $";
 								?></td>
-								<td><a href="cart.php?delcartid=<?php echo $result['cartId'] ?>">Xóa</a></td>
+								<td><a onclick = "return confirm('Bạn có muốn xóa ?')" href="cart.php?delcartid=<?php echo $result['cartId'] ?>">Xóa</a></td>
 							</tr>
 							<?php
 								}
-							}
 							?>
 						</table>
 						<table style="float:right;text-align:left;" width="40%">
@@ -80,6 +79,12 @@
 								<td><?php echo ($sub_total + $VAT)." $" ?></td>
 							</tr>
 					   </table>
+						 <?php
+					 		}
+							else {
+							 echo "Please shopping now";
+						 }
+						 ?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">
