@@ -31,13 +31,17 @@
 			VALUES('$id','$sessionId','$productName','$price','$quantity','$image')";
 			$insert_cart = $this->db->insert($query_insert);
 			if($insert_cart){
-				$alert = "<span class='success'> Insert product successfully</span>";
-				return $alert;
+				header('location:cart.php');
 			}else{
-				$alert = "<span class='error'> Insert product not success</span>";
-				return $alert;
+				header('location:404.php');
 			}
 		}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	public function get_product_cart(){
+		$query ="SELECT * FROM tbl_cart order by cartId desc";
+		$result = $this->db->select($query);
+		return $result;
+	}
 	}
 
 ?>
