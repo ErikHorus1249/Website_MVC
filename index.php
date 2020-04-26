@@ -24,7 +24,7 @@
 					 <a href="details.php"><img src="admin/upload/<?php echo $result['image'] ?>" alt="" width=150 height=150></a>
 					 <h2><?php echo $result['productName'] ?></h2>
 					 <p><?php echo $fm->textShorten($result['product_desc'], 20) ?></p>
-					 <p><span class="price"><?php echo $result['price']." VND" ?></span></p>
+					 <p><span class="price"><?php echo $result['price']." $" ?></span></p>
 				     <div class="button"><span><a href="details.php?productid=<?php echo $result['productId'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php
@@ -51,7 +51,7 @@
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="details.php"><img src="admin/upload/<?php echo $new_result['image'] ?>" alt="" width=150 height=150></a>
 					 <h2><?php echo $new_result['productName'] ?></h2>
-					 <p><span class="price"><?php echo $new_result['price']." VND" ?></span></p>
+					 <p><span class="price"><?php echo $new_result['price']." $" ?></span></p>
 				     <div class="button"><span><a href="details.php?productid=<?php echo $new_result['productId'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php

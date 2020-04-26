@@ -41,7 +41,7 @@
 							<tr>
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/upload/<?php echo $result['image'] ?>" alt=""/></td>
-								<td><?php echo $result['price'] ?></td>
+								<td><?php echo $result['price']." $" ?></td>
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartid" value="<?php echo $result['cartId'] ?>" />
@@ -52,7 +52,7 @@
 								<td><?php
 									$total = $result['quantity']*$result['price'];
 									$sub_total += $total;
-									echo $total;
+									echo $total." $";
 								?></td>
 								<td><a href="cart.php?delcartid=<?php echo $result['cartId'] ?>">Xóa</a></td>
 							</tr>
@@ -64,15 +64,15 @@
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
-								<td><?php echo $sub_total ?></td>
+								<td><?php echo $sub_total." $" ?></td>
 							</tr>
 							<tr>
 								<th>thuế  VAT: </th>
-								<td><?php echo $VAT = $sub_total*0.1 ?></td>
+								<td><?php echo ($VAT = $sub_total*0.1)." $" ?></td>
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td><?php echo $sub_total + $VAT ?></td>
+								<td><?php echo ($sub_total + $VAT)." $" ?></td>
 							</tr>
 					   </table>
 					</div>
