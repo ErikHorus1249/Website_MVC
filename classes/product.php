@@ -199,6 +199,23 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		public function show_product_by_cat($id){
+			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product
+			// $query = "SELECT  * FROM  tbl_product order by productId desc ";
+
+
+			// Su dung lenh mysql nhung chi lay duoc gia tri cua bang product category va brand
+
+			$query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+			FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+			INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+			WHERE tbl_product.catId = '$id' ORDER BY productId DESC";
+
+			$result = $this->db->select($query);
+			return $result;
+		}
 
 }
 ?>

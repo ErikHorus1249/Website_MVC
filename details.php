@@ -28,7 +28,7 @@
 							$result = $product_detail->fetch_assoc();
 						?>
 					<div class="grid images_3_of_2">
-						<img src="admin/upload/<?php echo $result['image'] ?>" alt=""/>
+						<img src="admin/upload/<?php echo $result['image'] ?>" height=200 alt=""/>
 					</div>
 				<div class="desc span_3_of_2">
 					<h2><?php echo $result['productName'] ?></h2>
@@ -66,7 +66,7 @@
 								if($showCategory){
 									while($result=$showCategory->fetch_assoc()){
 							?>
-								<li><a href="productbycat.html"><?php echo $result['catName'] ?></a></li>
+								<li><a href="productbycat.php?catid=<?php echo $result['catId'] ?>"><?php echo $result['catName'] ?></a></li>
 							<?php
 								}
 							}
