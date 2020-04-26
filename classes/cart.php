@@ -3,7 +3,6 @@
 	include_once './helper/format.php';
 ?>
 
-
 <?php
 
 	class cart
@@ -27,6 +26,13 @@
 			$price = $result['price'];
 			$productName = $result['productName'];
 			$image = $result['image'];
+
+			$check_cart = "SELECT * FROM tbl_cart WHERE productId = '$id' AND sessionId='$sessionId'";
+			$result_check_cart = $this->db->select($check_cart);
+			if($result_check_cart){
+				$message = "Product have already added";
+				return $message;
+			}else {
 			$query_insert = "INSERT INTO tbl_cart(productId,sessionId,productName,price,quantity,image)
 			VALUES('$id','$sessionId','$productName','$price','$quantity','$image')";
 			$insert_cart = $this->db->insert($query_insert);
@@ -36,6 +42,7 @@
 				header('location:404.php');
 			}
 		}
+	}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public function get_product_cart(){
 		$query ="SELECT * FROM tbl_cart order by cartId desc";
