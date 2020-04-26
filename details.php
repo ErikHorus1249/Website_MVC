@@ -18,18 +18,17 @@
     }
  ?>
 
-
  <div class="main">
     <div class="content">
     	<div class="section group">
-				<?php
+				<div class="cont-desc span_1_of_2">
+					<?php
 				  	$product_detail = $product->product_detail($id);
 						if($product_detail){
 							$result = $product_detail->fetch_assoc();
-				?>
-				<div class="cont-desc span_1_of_2">
+						?>
 					<div class="grid images_3_of_2">
-						<img src="admin/upload/<?php echo $result['image'] ?>" width=250 height="250 "alt="" />
+						<img src="admin/upload/<?php echo $result['image'] ?>" alt=""/>
 					</div>
 				<div class="desc span_3_of_2">
 					<h2><?php echo $result['productName'] ?></h2>
@@ -46,25 +45,34 @@
 					</form>
 				</div>
 			</div>
+
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<p><?php echo $result['product_desc'] ?></p>
-	</div>
-	<?php
-		}
-	?>
-				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
-					<ul>
-				      <li><a href="productbycat.php">Mobile Phones</a></li>
+				<p><?php echo $result['product_desc'] ?></p>
+	    </div>
+			<?php
+			}
+			?>
+		</div>
+					<div class="rightsidebar span_3_of_1">
+							<h2>Sản phẩm</h2>
+							<ul>
+							<?php
+							$showCategory = $cat->show_category();
+								if($showCategory){
+									while($result=$showCategory->fetch_assoc()){
+							?>
+								<li><a href="productbycat.html"><?php echo $result['catName'] ?></a></li>
+							<?php
+								}
+							}
+							?>
+							</ul>
 
-    				</ul>
-
- 				</div>
+				</div>
  		</div>
  	</div>
 	</div>
-
-<?php
-	include 'inc/footer.php';
+	<?php
+ include 'inc/footer.php';
 ?>
