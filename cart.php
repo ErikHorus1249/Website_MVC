@@ -34,7 +34,8 @@
 							</tr>
 							<?php
 							 	$getProductCart = $cart->get_product_cart();
-								$sub_total = 0;
+								$sub_total = 0; //Tong don gia
+								$qtt = 0; // so luong trong gio hang
 								if($getProductCart){
 									while($result=$getProductCart->fetch_assoc()){
 							?>
@@ -45,7 +46,7 @@
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartid" value="<?php echo $result['cartId'] ?>" />
-										<input type="number" name="quantity" value="<?php echo $result['quantity'] ?>" min="1"/>
+										<input type="number" name="quantity" value="<?php echo $result['quantity']; $qtt+=$result['quantity'] ?>" min="1"/>
 										<input type="submit" name="submit" value="sửa"/>
 									</form>
 								</td>
@@ -64,7 +65,11 @@
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
-								<td><?php echo $sub_total." $" ?></td>
+								<td><?php
+									echo $sub_total." $";
+									Session::set('sum',$sub_total);
+									Session::set('quantity',$qtt);
+								?></td>
 							</tr>
 							<tr>
 								<th>thuế  VAT: </th>

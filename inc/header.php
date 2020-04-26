@@ -65,8 +65,17 @@
 			    <div class="shopping_cart">
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
-								<span class="cart_title">Cart</span>
-								<span class="no_product">(empty)</span>
+								<span class="cart_title"><?php echo Session::get("quantity")." : " ?></span>
+								<span class="no_product">
+                  <?php
+                  	$checkEmptyCart = $cart->check_empty_cart();
+                    if($checkEmptyCart){
+                    echo $sum = Session::get("sum")." $";
+                    }else {
+                    echo 'empty';
+                  }
+                  ?>
+                </span>
 							</a>
 						</div>
 			      </div>

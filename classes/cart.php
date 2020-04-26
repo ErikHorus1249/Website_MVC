@@ -45,7 +45,8 @@
 	}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public function get_product_cart(){
-		$query ="SELECT * FROM tbl_cart order by cartId desc";
+		$sessionId = session_id();
+		$query ="SELECT * FROM tbl_cart WHERE sessionId='$sessionId' order by cartId desc";
 		$result = $this->db->select($query);
 		return $result;
 	}
@@ -74,6 +75,13 @@
 							return $alert;
 						}
 				}
+				// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+						public function check_empty_cart(){
+							$sessionId = session_id();
+							$check_cart = "SELECT * FROM tbl_cart WHERE sessionId='$sessionId'";
+							$result_check_cart = $this->db->select($check_cart);
+							return $result_check_cart;
+						}
 }
 
 ?>
