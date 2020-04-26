@@ -49,6 +49,28 @@
 		$result = $this->db->select($query);
 		return $result;
 	}
-	}
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		public function update_cart($cartId, $quantity){
+			$query = "UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
+			$result = $this->db->update($query);
+			if($result){
+				echo "ok";
+			}else {
+				echo "No";
+			}
+		}
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+				public function delete_cart($id){
+					$query = "DELETE   FROM  tbl_cart WHERE cartId = '$id'";
+					$result = $this->db->delete($query);
+					if($result){
+							$alert = "<span class='success'>Product war deleted successfully</span>";
+							return $alert;
+						}else{
+							$alert = "<span class='error'>Product warn't deleted successfully</span>";
+							return $alert;
+						}
+				}
+}
 
 ?>

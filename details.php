@@ -1,6 +1,6 @@
 <?php
-	include 'inc/header.php';
-	// include 'inc/slider.php';
+	include_once 'inc/header.php';
+	//include_once 'inc/slider.php';
 ?>
 
 <?php
@@ -42,10 +42,11 @@
 					<form action="" method="post">
 						<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/><br>
-						<?php if(isset($addToCart)){
-							echo "$addToCart";
-						}?>
 					</form>
+					<?php if(isset($addToCart)){
+						echo $addToCart;
+					}
+					?>
 				</div>
 			</div>
 

@@ -2,7 +2,17 @@
 	include 'inc/header.php';
 	include 'inc/slider.php';
 ?>
-
+<?php
+	if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+			$cartId = $_POST['cartid'];
+			$quantity = $_POST['quantity'];
+			$updateInfoCart = $cart->update_cart($cartId, $quantity);
+	}
+	if(isset($_GET['delcartid'])){
+		$delCartId = $_GET['delcartid'];
+		$deleteCart = $cart->delete_cart($delCartId);
+	}
+?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">
@@ -29,16 +39,22 @@
 								<td><?php echo $result['price'] ?></td>
 								<td>
 									<form action="" method="post">
-										<input type="number" name="" value="<?php echo $result['quantity'] ?>" min="1"/>
+										<input type="hidden" name="cartid" value="<?php echo $result['cartId'] ?>" />
+										<input type="number" name="quantity" value="<?php echo $result['quantity'] ?>" min="1"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
+									<?php
+									 	if(isset($updateInfoCart)){
+											return $updateInfoCart;
+										}
+									?>
 								</td>
 								<td><?php
 									$total = $result['quantity']*$result['price'];
 									$sub_total += $total;
 									echo $total;
 								?></td>
-								<td><a href="">X</a></td>
+								<td><a href="cart.php?delcartid=<?php echo $result['cartId'] ?>">X</a></td>
 							</tr>
 							<?php
 								}
