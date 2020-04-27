@@ -79,7 +79,22 @@
 							</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.php">Login</a></div>
+        <?php
+            if(isset($_GET['customer_id'])){
+              $delcart = $cart->delete_data_cart();
+              Session::destroy();
+            }
+        ?>
+		   <div class="login">
+         <?php
+            $check_login = Session::get('customerId');
+            if($check_login == false){
+              echo '<a href="login.php">Login</a>';
+            }else {
+              echo '<a href="?customer_id='.Session::get('customerid').'" >Logout</a>';
+            }
+         ?>
+        </div>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>

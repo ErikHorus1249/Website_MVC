@@ -1,6 +1,15 @@
+
+
 <?php
 	include 'inc/header.php';
 	//include 'inc/slider.php';
+?>
+
+<?php
+	 $check_login = Session::get('customerId');
+	 if($check_login){
+		 header('location:order.php');
+	 }
 ?>
 
 <?php

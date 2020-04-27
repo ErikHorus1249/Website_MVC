@@ -55,6 +55,7 @@
 			$query = "UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
 			$result = $this->db->update($query);
 			if($result){
+					header('location:cart.php');
 					$alert = "<span class='success'>Cart updated successfully</span>";
 					return $alert;
 				}else{
@@ -82,6 +83,14 @@
 							$result_check_cart = $this->db->select($check_cart);
 							return $result_check_cart;
 						}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			public function delete_data_cart(){
+				$sessionId = session_id();
+				$check_cart = "DELETE  FROM tbl_cart WHERE sessionId='$sessionId'";
+				$result_check_cart = $this->db->delete($check_cart);
+				return $result_check_cart;
+			}
 }
 
 ?>

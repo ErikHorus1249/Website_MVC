@@ -1,6 +1,6 @@
 <?php
 	include 'inc/header.php';
-	include 'inc/slider.php';
+	//include 'inc/slider.php';
 ?>
 <?php
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
@@ -17,6 +17,12 @@
 	if(isset($updateInfoCart)){
 		echo $updateInfoCart;
 	}
+?>
+<!-- Tu dong update so luong va gia moi khi them -->
+<?php
+  	if(!isset($_GET['id'])){
+			echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
+		}
 ?>
  <div class="main">
     <div class="content">
@@ -36,7 +42,7 @@
 							 	$getProductCart = $cart->get_product_cart();
 								$sub_total = 0; //Tong don gia
 								$qtt = 0; // so luong trong gio hang
-								if($getProductCart){
+								if(isset($getProductCart)){
 									while($result=$getProductCart->fetch_assoc()){
 							?>
 							<tr>
