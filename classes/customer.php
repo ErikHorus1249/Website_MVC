@@ -30,19 +30,50 @@
 				$alert = "<span class='success'>content must be not empty</span>";
 				return $alert;
 			}else {
-        $query = "INSERT INTO tbl_customer(name, address, city, country, zipCode, phone, mail, password)
+				$check_customer = "SELECT * FROM tbl_customer WHERE mail = '$mail' ";
+				$result_check_customer = $this->db->select($check_customer);
+				if($result_check_customer){
+					$message ="<span class='error'> account have already added</span>";
+					return $message;
+				}else {
+
+				$query = "INSERT INTO tbl_customer(name, address, city, country, zipCode, phone, mail, password)
         VALUES('$name','$address','$city','$country','$zipcode','$phone', '$mail', '$password')";
 				$result = $this->db->insert($query);
         if($result){
-					$alert = "<span class='success'> Insert product successfully</span>";
+					$alert = "<span class='success'> Creating product successfully</span>";
 					return $alert;
 				}else{
 					$alert = "<span class='error'> Insert product not success</span>";
 					return $alert;
+					}
 				}
       }
     }
+//######################################################################################################################
+		public function login_customer($data){
 
+			$mail = mysqli_real_escape_string($this->db->link, $data['mail']);
+      $password = mysqli_real_escape_string($this->db->link, $data['password']);
+			if($mail=="" || $password==""){
+				$alert = "<span class='error'>Field must be not empty</span>";
+				return $alert;
+			}else{
+				$query = "SELECT * FROM tbl_customer WHERE mail = '$mail' AND password = '$password'";
+				$result = $this->db->select($query);
+				if($result){
+					$sessionInfo = $result->fetch_assoc();
+					Session::set('customerId',true);
+					Session::set('customerName',$sessionInfo['name']);
+					Session::set('customerid',$sessionInfo['id']);
+					header('location:order.php');
+				}else {
+					$alert = "<span class='error'> Email or password is invalid</span>";
+					return $alert;
+					header('location:404.php');
+				}
+			}
+		}
 }
 
 ?>
