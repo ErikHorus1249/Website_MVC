@@ -6,7 +6,6 @@
 <?php include '../classes/product.php';?>
 
 <?php
-
     $pd = new product();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){

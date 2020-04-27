@@ -19,7 +19,7 @@
   $product = new product();
   $cat = new category();
   $brand = new brand();
-
+  $customer = new customer();
 ?>
 
 <?php
