@@ -215,6 +215,33 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	public function get_lasted_lock(){
+		$query = "SELECT  * FROM  tbl_product WHERE brandId = '14' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		public function get_lasted_sukoi(){
+			$query = "SELECT  * FROM  tbl_product WHERE brandId = '11' order by productId desc LIMIT 1";
+			$result = $this->db->select($query);
+			return $result;
+		}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	public function get_lasted_yak(){
+		$query = "SELECT  * FROM  tbl_product WHERE brandId = '15' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	public function get_lasted_an(){
+		$query = "SELECT  * FROM  tbl_product WHERE brandId = '13' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
 }
 ?>
