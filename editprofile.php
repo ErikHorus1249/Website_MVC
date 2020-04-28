@@ -15,12 +15,10 @@
     // }else{
     //     $id = $_GET['productid'];
     // }
-    //
-		// if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
-		// 		$quantity = $_POST['quantity'];
-    //     $addToCart = $cart->add_to_cart($id, $quantity);
-    //
-    // }
+    $id = Session::get('customerid');
+		if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])){
+        $updateCustomer = $customer->update_customer($id,$_POST);
+    }
  ?>
 
  <div class="main">
@@ -28,10 +26,16 @@
     	<div class="section group">
         <div class="content_top">
       		<div class="heading">
-      		<h3>Thong tin khach hang</h3>
+      		<h3>Cap nhat thong tin khach hang</h3>
+          <h4><?php
+              if(isset($updateCustomer)){
+                echo $updateCustomer;
+              }
+          ?></h4>
       		</div>
       		<div class="clear"></div>
       	</div>
+        <form action="" method="post">
         <table class="tblone">
           <?php
               $id = Session::get('customerid');
@@ -41,37 +45,38 @@
           ?>
           <tr>
             <td>Name</td>
-            <td>|</td>
-            <td><?php echo $result['name'] ?></td>
+            <td></td>
+            <td><input type='text' name='name' value='<?php echo $result['name'] ?>' class="grey"></td>
           </tr>
           <tr>
             <td>Address</td>
-            <td>|</td>
-            <td><?php echo $result['address'] ?></td>
+            <td></td>
+            <td><input type='text' name='address' value='<?php echo $result['address'] ?>' class="grey"></td>
           </tr>
           <tr>
             <td>Zipcode</td>
-            <td>|</td>
-            <td><?php echo $result['zipcode'] ?></td>
+            <td></td>
+            <td><input type='text' name='zipcode' value='<?php echo $result['zipcode'] ?>' class="grey"></td>
           </tr>
           <tr>
             <td>Phone</td>
-            <td>|</td>
-            <td><?php echo $result['phone'] ?></td>
+            <td></td>
+            <td><input type='text' name='phone' value='<?php echo $result['phone'] ?>' class="grey"></td>
           </tr>
           <tr>
             <td>Email</td>
-            <td>|</td>
-            <td><?php echo $result['mail'] ?></td>
+            <td></td>
+            <td><input type='text' name='mail' value='<?php echo $result['mail'] ?>' class="grey"></td>
           </tr>
           <tr>
-            <td colspan="3"><a href="editprofile.php"> Upgrade </a></td>
+            <td colspan="3"><input type='submit' name='save' value='Save' class="grey"></td>
           <tr>
           <?php
             }
           }
           ?>
         </table>
+      </form>
  		  </div>
  	  </div>
 </div>

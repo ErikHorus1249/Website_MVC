@@ -79,6 +79,39 @@
 			$query = "SELECT * FROM tbl_customer WHERE id = '$id'";
 			return $result = $this->db->select($query);
 		}
+
+//######################################################################################################################
+	public function update_customer($id,$data){
+		$name = mysqli_real_escape_string($this->db->link, $data['name']);
+		$address = mysqli_real_escape_string($this->db->link, $data['address']);
+		//$city = mysqli_real_escape_string($this->db->link, $data['city']);
+		//$country = mysqli_real_escape_string($this->db->link, $data['country']);
+		$zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
+		$phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+		$mail = mysqli_real_escape_string($this->db->link, $data['mail']);
+		//$password = mysqli_real_escape_string($this->db->link, $data['password']);
+
+		// if($name=="" || $address=="" || $city=="" || $country=="" || $zipcode=="" || $phone=="" || $mail=="" || $password==""){
+		if($name=="" || $address=="" || $zipcode=="" || $phone=="" || $mail=="" ){
+			$alert = "<span class='success'>Field must be not empty</span>";
+			return $alert;
+		}else {
+
+			$query = "UPDATE tbl_customer
+			SET name = '$name', address='$address', zipcode='$zipcode', phone = '$phone', mail = '$mail'
+			WHERE id = '$id'";
+			$result = $this->db->update($query);
+			if($result){
+				$alert = "<span class='success'> Update custumer info successfully</span>";
+				return $alert;
+			}else{
+				$alert = "<span class='error'> Update customer info not success</span>";
+				return $alert;
+			}
+		}
+	}
+
+
 }
 
 ?>
