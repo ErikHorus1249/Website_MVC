@@ -77,7 +77,7 @@
                   }
                   ?>
                 </span>
-                <span class="cart_title">Total : </span>
+                <span class="cart_title">Tl : </span>
                 <span class="no_product">
                   <?php
                   	$checkEmptyCart = $cart->check_empty_cart();
