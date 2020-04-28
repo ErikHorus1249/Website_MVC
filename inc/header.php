@@ -65,8 +65,20 @@
 			    <div class="shopping_cart">
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
-								<span class="cart_title"><?php echo Session::get("quantity")." : " ?></span>
+								<!-- <span class="cart_title"><?php echo Session::get("quantity")." : " ?></span> -->
+                <span class="cart_title">SL : </span>
 								<span class="no_product">
+                  <?php
+                  	$checkEmptyCart = $cart->check_empty_cart();
+                    if($checkEmptyCart){
+                    echo $sum = Session::get("quantity");
+                    }else {
+                    echo '';
+                  }
+                  ?>
+                </span>
+                <span class="cart_title">Total : </span>
+                <span class="no_product">
                   <?php
                   	$checkEmptyCart = $cart->check_empty_cart();
                     if($checkEmptyCart){
@@ -104,13 +116,21 @@
 	  <li><a href="index.php">Home</a></li>
 	  <li><a href="products.php">Sản phẩm</a> </li>
 	  <li><a href="topbrands.php">Top Brands</a></li>
-	  <li><a href="cart.php">Thanh toán </a></li>
+    <?php
+       $checkEmptyCart = $cart->check_empty_cart();
+       $check_login = Session::get('customerId');
+       if($checkEmptyCart==false && $check_login==false){
+         echo '';
+       }else {
+         echo '<li><a href="cart.php">Thanh toán </a></li>';
+       }
+    ?>
     <?php
        $check_login = Session::get('customerId');
        if($check_login == false){
          echo '';
        }else {
-         echo '<li><a href="contact.php">Profile</a> </li>';
+         echo '<li><a href="profile.php">Profile</a></li>';
        }
     ?>
 	  <li><a href="contact.php">Liên hệ</a> </li>

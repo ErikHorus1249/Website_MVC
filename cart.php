@@ -42,7 +42,7 @@
 							 	$getProductCart = $cart->get_product_cart();
 								$sub_total = 0; //Tong don gia
 								$qtt = 0; // so luong trong gio hang
-								if(isset($getProductCart)){
+								if($getProductCart){
 									while($result=$getProductCart->fetch_assoc()){
 							?>
 							<tr>

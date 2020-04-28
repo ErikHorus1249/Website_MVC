@@ -77,12 +77,12 @@
 						}
 				}
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-						public function check_empty_cart(){
-							$sessionId = session_id();
-							$check_cart = "SELECT * FROM tbl_cart WHERE sessionId='$sessionId'";
-							$result_check_cart = $this->db->select($check_cart);
-							return $result_check_cart;
-						}
+				public function check_empty_cart(){
+					$sessionId = session_id();
+					$check_cart = "SELECT * FROM tbl_cart WHERE sessionId='$sessionId'";
+					$result_check_cart = $this->db->select($check_cart);
+					return $result_check_cart;
+				}
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			public function delete_data_cart(){
